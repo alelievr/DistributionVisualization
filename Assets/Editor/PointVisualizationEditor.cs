@@ -27,10 +27,13 @@ public class PointVisualizationEditor : Editor
 	void OnSceneGUI()
 	{
 		var pos = pointVisualization.transform.position;
-		foreach (var p in pointVisualization.points)
+		if (pointVisualization.points != null)
 		{
-			Handles.color = new Color(p.x, p.y, p.z, 1);
-			Handles.DotHandleCap(0, pos + p, Quaternion.identity, .05f, EventType.Repaint);
+			foreach (var p in pointVisualization.points)
+			{
+				Handles.color = new Color(p.x, p.y, p.z, 1);
+				Handles.DotHandleCap(0, pos + p, Quaternion.identity, .05f, EventType.Repaint);
+			}
 		}
 	}
 }
